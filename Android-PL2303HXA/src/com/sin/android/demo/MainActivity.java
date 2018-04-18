@@ -56,11 +56,11 @@ public class MainActivity extends BaseActivity {
 			if (com.sin.android.usb.pl2303hxa.PL2303Driver.ACTION_PL2303_PERMISSION.equals(action)) {
 				synchronized (this) {
 					if (intent.getBooleanExtra(UsbManager.EXTRA_PERMISSION_GRANTED, false)) {
-						AddLog("授权成功");
+						AddLog("Успешно разрешено");
 						open();
 					} else {
 						curDriver = null;
-						AddLog("授权失败");
+						AddLog("Ошибка авторизации");
 					}
 				}
 			}
@@ -163,9 +163,9 @@ public class MainActivity extends BaseActivity {
 		// 试用第1个PL2303设备
 		List<UsbDevice> devices = PL2303Driver.getAllSupportedDevices(this);
 		if (devices.size() == 0) {
-			AddLog("请先插入PL2303HXA设备");
+			AddLog("Сначала вставьте устройство PL2303HXA");
 		} else {
-			AddLog("当前PL2303HXA设备:");
+			AddLog("Текущее устройство PL2303HXA:");
 			for (UsbDevice d : devices) {
 				AddLog(" " + d.getDeviceId());
 			}
@@ -197,7 +197,7 @@ public class MainActivity extends BaseActivity {
 
 	private String getReceive(ArrayList<Byte> recs) {
 		StringBuffer sb = new StringBuffer();
-		sb.append("收到: ");
+		sb.append("Получено: ");
 		if (cb_hex_rev.isChecked()) {
 			for (Byte b : recs) {
 				sb.append(String.format("%02x ", b));
@@ -212,7 +212,7 @@ public class MainActivity extends BaseActivity {
 				sb.append(new String(data, TEXT_CHARSET));
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
-				AddLog("转换编码失败");
+				AddLog("Код конверсии не выполнен");
 			}
 		}
 		return sb.toString();
@@ -223,7 +223,7 @@ public class MainActivity extends BaseActivity {
 		asynCall(new Callable() {
 			@Override
 			public void call(Object... arg0) {
-				AddLog("开始接收");
+				AddLog("Начат прием");
 
 				ArrayList<Byte> recs = new ArrayList<Byte>();
 				long pretime = System.currentTimeMillis();
@@ -255,7 +255,7 @@ public class MainActivity extends BaseActivity {
 					if (recs.size() == 0)
 						pretime = System.currentTimeMillis();
 				}
-				AddLog("接收结束");
+				AddLog("Конец приема");
 			}
 		});
 	}
@@ -277,7 +277,7 @@ public class MainActivity extends BaseActivity {
 							if (v >= 10)
 								sleep = v;
 						} catch (Exception e) {
-							AddLog("间隔错误");
+							AddLog("Ошибочный интервал");
 						}
 
 						try {
@@ -310,7 +310,7 @@ public class MainActivity extends BaseActivity {
 			e.printStackTrace();
 		}
 
-		AddLog("打开串口", curDriver.getDeviceID());
+		AddLog("Открытие последовательного порта", curDriver.getDeviceID());
 		try {
 			curDriver.setBaudRate(Integer.parseInt(sp_baudrate.getSelectedItem().toString()));
 			curDriver.open();
@@ -319,27 +319,27 @@ public class MainActivity extends BaseActivity {
 			startAutoSendThread();
 			refreshButton();
 		} catch (PL2303Exception e) {
-			AddLog("打开失败");
+			AddLog("Не удалось открыть");
 			AddLog(e.getMessage());
 			e.printStackTrace();
 		}
 	}
 
 	private void close() {
-		AddLog("关闭串口");
+		AddLog("Закрытые последовательного порта");
 		synchronized (curDriver) {
 			curDriver.cleanRead();
 			curDriver.close();
 		}
 		curDriver = null;
-		AddLog("关闭成功");
+		AddLog("Закрыто успешно");
 
 		refreshButton();
 	}
 
 	private void send() {
 		if (curDriver == null) {
-			AddLog("请先打开串口");
+			AddLog("Сначала откройте последовательный порт");
 			return;
 		}
 
@@ -355,13 +355,13 @@ public class MainActivity extends BaseActivity {
 					try {
 						int d = Integer.parseInt(hex, 16);
 						if (d > 255) {
-							AddLog("%s 大于0xff", hex);
+							AddLog("%s Больше, чем 0xff", hex);
 							okflag = false;
 						} else {
 							data.add((byte) d);
 						}
 					} catch (NumberFormatException e) {
-						AddLog("%s 不是十六进制数", hex);
+						AddLog("%s не шестнадцатеричное число", hex);
 						e.printStackTrace();
 						okflag = false;
 					}
@@ -372,7 +372,7 @@ public class MainActivity extends BaseActivity {
 					}
 				}
 			} else {
-				AddLog("要发送的十六进制数据为空");
+				AddLog("Шестнадцатеричные данные для отправки пустые");
 			}
 		} else {
 			try {
@@ -380,7 +380,7 @@ public class MainActivity extends BaseActivity {
 				curDriver.write(data);
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
-				AddLog("转换编码失败");
+				AddLog("Код конверсии не выполнен");
 			}
 		}
 	}

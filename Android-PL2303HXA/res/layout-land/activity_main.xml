@@ -15,7 +15,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="波特率："
+            android:text="Скорость"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <Spinner
@@ -28,13 +28,13 @@
             android:id="@+id/btn_open"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/btn_height"
-            android:text="打开串口" />
+            android:text="Открыть" />
 
         <Button
             android:id="@+id/btn_close"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/btn_height"
-            android:text="关闭串口"
+            android:text="Закрыть"
             android:visibility="gone" />
 
         <CheckBox
@@ -42,14 +42,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/margin_small"
-            android:text="HEX发送" />
+            android:text="TX HEX" />
 
         <CheckBox
             android:id="@+id/cb_hex_rev"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/margin_small"
-            android:text="HEX接收" />
+            android:text="RX HEX" />
     </LinearLayout>
 
     <LinearLayout
@@ -62,15 +62,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="每间隔"
+            android:text="Интервал "
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <EditText
             android:id="@+id/et_sleep"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/border"
-            android:ems="3"
+            android:ems="5"
             android:enabled="false"
             android:text="1000" >
         </EditText>
@@ -78,7 +77,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ms"
+            android:text=" ms"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <CheckBox
@@ -87,13 +86,13 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/margin_small"
             android:layout_weight="1"
-            android:text="自动发送" />
+            android:text="Цикл" />
 
         <Button
             android:id="@+id/btn_send"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/btn_height"
-            android:text="发送数据" />
+            android:text="Отправить" />
     </LinearLayout>
 
     <LinearLayout
@@ -109,9 +108,8 @@
             android:layout_height="match_parent"
             android:layout_marginRight="@dimen/margin_small"
             android:layout_weight="1"
-            android:background="@drawable/border"
             android:gravity="top|left"
-            android:hint="字符模式直接输入,如:Hello World\nHEX模式用空格分割,如:1E 10 20 F0"
+            android:hint="Прямой ввод символов: Hello World\nHEX режим: 1E 10 20 F0"
             android:padding="@dimen/padding_smal"
             android:textSize="14sp" >
         </EditText>
@@ -119,8 +117,7 @@
         <ScrollView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/border" >
+            android:layout_weight="1" >
 
             <TextView
                 android:id="@+id/tv_log"
