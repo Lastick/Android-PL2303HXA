@@ -62,4 +62,4 @@ PL2303Selector.createSelectDialog(this, 0, false, new PL2303Selector.Callback() 
 如果想直接体验的话这里有编译好的apk：[https://github.com/sintrb/Android-PL2303HXA/tree/master/APK](https://github.com/sintrb/Android-PL2303HXA/tree/master/APK)
 
 来个简单的截图：
-![PL2303HXA截图](https://raw.githubusercontent.com/sintrb/Android-PL2303HXA/master/IMG/screenshot.png)
+![PL2303HXA截图](https://raw.githubusercontent.com/lastick/Android-PL2303HXA/master/IMG/screenshot.png)
