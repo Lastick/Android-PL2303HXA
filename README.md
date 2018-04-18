@@ -59,7 +59,7 @@ PL2303Selector.createSelectDialog(this, 0, false, new PL2303Selector.Callback() 
 对于Android获取当前挂载的USB设备可以参考我的另外一个工程 [AndroidDemos](https://github.com/sintrb/AndroidDemos)的ListUSBDevice子项，或者直接安装[ListUSBDevice](https://github.com/sintrb/AndroidDemos/blob/master/APK/ListUSBDevice.apk?raw=true) 。
 
 
-如果想直接体验的话这里有编译好的apk：[https://github.com/sintrb/Android-PL2303HXA/tree/master/APK](https://github.com/sintrb/Android-PL2303HXA/tree/master/APK)
+如果想直接体验的话这里有编译好的apk：[https://github.com/lastick/Android-PL2303HXA/tree/master/APK](https://github.com/lastick/Android-PL2303HXA/tree/master/APK)
 
 来个简单的截图：
 ![PL2303HXA截图](https://raw.githubusercontent.com/lastick/Android-PL2303HXA/master/IMG/screenshot.png)
